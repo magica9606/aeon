@@ -1,1 +1,27 @@
+name: Stock Watcher
 
+on:
+  schedule:
+    # 5分おきに実行(UTC基準。GitHub Actionsの仕様上、多少の遅延あり)
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}  # 手動実行もできるようにしておく
+
+jobs:
+  check-stock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Pythonをセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 必要なライブラリをインストール
+        run: pip install requests
+
+      - name: 在庫チェックを実行
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python check_stock.py
