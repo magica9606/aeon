@@ -4,18 +4,7 @@ import requests
 
 # 監視対象の商品ページURL(何個でも追加可能)
 TARGET_URLS = [
-    "https://aeonretail.com/product/0/P-2135500002815",
-    "https://aeonretail.com/product/0/P-2135500002655",
-    "https://aeonretail.com/product/0/P-2135500002785",
-    "https://aeonretail.com/product/0/P-2135500002877",
-    "https://aeonretail.com/product/0/P-2135500002778",
-    "https://aeonretail.com/product/0/P-4521329427270",
-    "https://aeonretail.com/product/0/P-2135500003027",
-    # "https://aeonretail.com/product/0/P-xxxxxxxxxxxxx",  # 追加はこの形式でコピペ
-]
 
-# GitHub Secretsから読み込む(コードには直接書かない)
-WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
 # ブラウザからのアクセスに見せるためのヘッダー
 HEADERS = {
